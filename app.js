@@ -34,11 +34,11 @@ app.post("/",function(req,res){
 
   var jsonData = JSON.stringify(data);
   // now in previous weather website we just make get request to fetch some data from the API but here we need to post data entered by the host(user) to the mailchimp list so for that we need to use diff functions of htpps native module and by checking the documentation we can see we should use a request sub-module to post some data on external server-API
-  const url="https://us19.api.mailchimp.com/3.0/lists/b7486b867c"; //adding endpoint as the URL  BEWARE OF YOUR usX server replace  X in default url link wiht your server number i.e 19 here
+  const url="https://us19.api.mailchimp.com/3.0/lists/uniquekey"; //adding endpoint as the URL  BEWARE OF YOUR usX server replace  X in default url link wiht your server number i.e 19 here
   // basically this options is an argument associated with the https.request() function it is very imp basically it is to specify what things are needed to be done by request function like method,authentication etc. check its documentation for more
   const options={
     method: "POST",
-    auth: "harsh77:f0dcdf6c213aafaf166952278e3b9843-us19"       // this authorization is for our list used check its documentation on mailchimp and request-options doc
+    auth: "harsh77:apikey"       // this authorization is for our list used check its documentation on mailchimp and request-options doc
    // auth: "username:pass(API key)"
   }
 
@@ -68,8 +68,6 @@ app.listen( process.env.PORT || 3000,function(){    // here as we are deploying 
 });
 
 
-//Mailchimp API-key - f0dcdf6c213aafaf166952278e3b9843-us19
-// unique list id- b7486b867c
 // one very imp think to note is if any time you get any error while deploying a server use **** heroku logs***** to get the error
 
 // it is very imp to create a Procfile as basically for heroku servers after they receive host request they need to return our site so we need to write web: node ourfilename.js (JS file from which our site should load first)
